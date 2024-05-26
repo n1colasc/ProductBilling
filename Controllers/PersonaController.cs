@@ -8,20 +8,20 @@ using System.Web.Http;
 namespace ProductBilling.Controllers
 {
     /// <summary>
-    /// Permite ejecutar funcionalidades de lectura, creación, actualización y eliminación de clientes (personas)
+    /// Permite ejecutar funcionalidades de lectura, creación, actualización y eliminación de las personas
     /// </summary>
     [Authorize]
-    [RoutePrefix("api/persona")]
-    public class PersonaController : ApiController
+    [RoutePrefix("api/personas")]
+    public class PersonaController : System.Web.Http.ApiController
     {
         /// <summary>
-        /// Permite eliminar un cliente (persona)
+        /// Permite eliminar una persona
         /// </summary>
         /// <param name="Tipo_Documento">Tipo de documento de la persona</param>
         /// <param name="Numero_Documento">Número de identificación de la persona</param>
         /// <param name="Numero_Factura">Número de factura</param>
-        /// <returns>OK si eliminó el cliente, FALSE si hubo una excepción</returns>
-        [HttpPatch]
+        /// <returns>OK si eliminó la persona, FALSE si hubo una excepción</returns>
+        [HttpDelete]
         [Route("v1/delete")]
         public string Delete_v1(string Tipo_Documento, string Numero_Documento, int Numero_Factura)
         {
@@ -29,12 +29,12 @@ namespace ProductBilling.Controllers
         }
 
         /// <summary>
-        /// Permite consultar a un cliente (persona)
+        /// Permite consultar a un producto
         /// </summary>
         /// <param name="Tipo_Documento">Tipo de documento de la persona</param>
         /// <param name="Numero_Documento">Número de identificación de la persona</param>
         /// <param name="Numero_Factura">Número de factura para consulta individual (Opcional)</param>
-        /// <returns>Información asociada al cliente</returns>
+        /// <returns>Información asociada a la persona</returns>
         [HttpGet]
         [Route("v1/get")]
         public string Get_v1(string Tipo_Documento, string Numero_Documento, int? Numero_Factura)
@@ -43,7 +43,7 @@ namespace ProductBilling.Controllers
         }
 
         /// <summary>
-        /// Permite crear un nuevo cliente (persona)
+        /// Permite crear un nuevo producto
         /// </summary>
         /// <returns>OK si creó la persona, FALSE si hubo una excepción</returns>
         [HttpPost]
@@ -55,7 +55,7 @@ namespace ProductBilling.Controllers
         }
 
         /// <summary>
-        /// Permite actualizar una factura asociada a un cliente (persona)
+        /// Permite actualizar una factura asociada a un producto
         /// </summary>
         /// <returns>OK si actualizó la persona, FALSE si hubo una excepción</returns>
         [HttpPatch]

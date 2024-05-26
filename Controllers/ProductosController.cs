@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProductBillingBusiness;
+using ProductBillingModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,9 +12,8 @@ namespace ProductBilling.Controllers
     /// <summary>
     /// Permite ejecutar funcionalidades de lectura, creación, actualización y eliminación de productos
     /// </summary>
-    [Authorize]
     [RoutePrefix("api/productos")]
-    public class ProductosController : ApiController
+    public class ProductosController : System.Web.Http.ApiController
     {
         /// <summary>
         /// Permite eliminar un producto
@@ -21,7 +22,7 @@ namespace ProductBilling.Controllers
         /// <param name="Numero_Documento">Número de identificación de la persona</param>
         /// <param name="Numero_Factura">Número de factura</param>
         /// <returns>OK si eliminó el producto, FALSE si hubo una excepción</returns>
-        [HttpPatch]
+        [HttpDelete]
         [Route("v1/delete")]
         public string Delete_v1(string Tipo_Documento, string Numero_Documento, int Numero_Factura)
         {
@@ -37,9 +38,9 @@ namespace ProductBilling.Controllers
         /// <returns>Información asociada al producto</returns>
         [HttpGet]
         [Route("v1/get")]
-        public string Get_v1(string Tipo_Documento, string Numero_Documento, int? Numero_Factura)
+        public PRODUCTOS Get_v1()
         {
-            return string.Empty;
+            return ProductosBusiness.GetInstance.Get();
         }
 
         /// <summary>
