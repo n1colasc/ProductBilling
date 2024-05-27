@@ -16,29 +16,23 @@ namespace ProductBilling.Controllers
     public class ProductosController : System.Web.Http.ApiController
     {
         /// <summary>
-        /// Permite eliminar un producto
+        /// Permite eliminar los productos
         /// </summary>
-        /// <param name="Tipo_Documento">Tipo de documento de la persona</param>
-        /// <param name="Numero_Documento">Número de identificación de la persona</param>
-        /// <param name="Numero_Factura">Número de factura</param>
-        /// <returns>OK si eliminó el producto, FALSE si hubo una excepción</returns>
+        /// <returns>OK si eliminó los productos, FAIL si hubo una excepción</returns>
         [HttpDelete]
-        [Route("v1/delete")]
-        public string Delete_v1(string Tipo_Documento, string Numero_Documento, int Numero_Factura)
+        [Route("v1/execute")]
+        public BaseResponse<ProductsResponse> Delete_v1()
         {
-            return string.Empty;
+            return ProductosBusiness.GetInstance.Delete();
         }
 
         /// <summary>
-        /// Permite consultar a un producto
+        /// Permite consultar los productos
         /// </summary>
-        /// <param name="Tipo_Documento">Tipo de documento de la persona</param>
-        /// <param name="Numero_Documento">Número de identificación de la persona</param>
-        /// <param name="Numero_Factura">Número de factura para consulta individual (Opcional)</param>
-        /// <returns>Información asociada al producto</returns>
+        /// <returns>Información asociada a los productos</returns>
         [HttpGet]
-        [Route("v1/get")]
-        public PRODUCTOS Get_v1()
+        [Route("v1/execute")]
+        public BaseResponse<ProductsResponse> Get_v1()
         {
             return ProductosBusiness.GetInstance.Get();
         }
@@ -46,25 +40,23 @@ namespace ProductBilling.Controllers
         /// <summary>
         /// Permite crear un nuevo producto
         /// </summary>
-        /// <returns>OK si creó el producto, FALSE si hubo una excepción</returns>
+        /// <returns>OK si creó el producto, FAIL si hubo una excepción</returns>
         [HttpPost]
-        [Route("v1/insert")]
-        public string Insert_v1()
+        [Route("v1/execute")]
+        public BaseResponse<ProductsResponse> Insert_v1(ProductsRequest Request)
         {
-            // TODO: Pendiente crear modelos de entrada y salida
-            return string.Empty;
+            return ProductosBusiness.GetInstance.Insert(Request);
         }
 
         /// <summary>
-        /// Permite actualizar una factura asociada a un producto
+        /// Permite actualizar un producto
         /// </summary>
-        /// <returns>OK si actualizó el producto, FALSE si hubo una excepción</returns>
+        /// <returns>OK si actualizó el producto, FAIL si hubo una excepción</returns>
         [HttpPatch]
-        [Route("v1/update")]
-        public string Update_v1()
+        [Route("v1/execute")]
+        public BaseResponse<ProductsResponse> Update_v1(ProductsRequest Request)
         {
-            // TODO: Pendiente crear modelos de entrada y salida
-            return string.Empty;
+            return ProductosBusiness.GetInstance.Update(Request);
         }
     }
 }

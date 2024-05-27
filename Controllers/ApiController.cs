@@ -18,7 +18,7 @@ namespace ProductBilling.Controllers
         /// Permite ejecutar las funcionalidades CRUD Persona, Facturas, Productos y obtener la información de las vistas de la base de datos
         /// </summary>
         /// <returns>OK si fue exitoso el comsuno del servicio, FALSE si hubo una excepción</returns>
-        [HttpDelete]
+        [HttpPost]
         [Route("v1/execute")]
         public string ProductBilling_v1()
         {
